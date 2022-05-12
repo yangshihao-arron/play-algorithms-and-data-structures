@@ -1,4 +1,4 @@
-package a3_array_linkedlist_stack.array;
+package a3_array_queue_stack.stack;
 
 public class Array<E> {
 
@@ -60,6 +60,14 @@ public class Array<E> {
         if(index < 0 || index >= size)
             throw new IllegalArgumentException("get failed, index is illegal");
         return data[index];
+    }
+
+    public E getLast(){
+        return get(size - 1);
+    }
+
+    public E getFirst(){
+        return get(0);
     }
 
     //修改index索引位置的元素为e

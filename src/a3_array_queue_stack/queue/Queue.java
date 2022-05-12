@@ -1,4 +1,4 @@
-package a3_array_linkedlist_stack.queue;
+package a3_array_queue_stack.queue;
 
 public interface Queue<E> {
 

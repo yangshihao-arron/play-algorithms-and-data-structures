@@ -1,4 +1,4 @@
-package a3_array_linkedlist_stack.stack;
+package a3_array_queue_stack.stack;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -14,7 +14,7 @@ public class Main {
         stack.pop();
         System.out.println(stack);
         Deque<Integer> deque = new LinkedList<>();
-
+        System.out.println(deque.peek() == null);
 
     }
 }

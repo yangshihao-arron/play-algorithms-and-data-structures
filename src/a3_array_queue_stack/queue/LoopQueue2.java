@@ -1,4 +1,4 @@
-package a3_array_linkedlist_stack.queue;
+package a3_array_queue_stack.queue;
 
 //不浪费那1个空间
 public class LoopQueue2<E> implements Queue<E> {

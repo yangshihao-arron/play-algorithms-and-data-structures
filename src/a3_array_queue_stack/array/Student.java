@@ -1,4 +1,4 @@
-package a3_array_linkedlist_stack.array;
+package a3_array_queue_stack.array;
 
 public class Student implements Comparable<Student>{
     private String name;

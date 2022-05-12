@@ -1,4 +1,4 @@
-package a3_array_linkedlist_stack.queue;
+package a3_array_queue_stack.queue;
 
 //不使用size，只使用front和tail来完成LoopQueue3的所有逻辑
 public class LoopQueue3<E> implements Queue<E> {

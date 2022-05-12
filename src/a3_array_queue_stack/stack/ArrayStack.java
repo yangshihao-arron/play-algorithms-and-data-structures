@@ -1,4 +1,4 @@
-package a3_array_linkedlist_stack.stack;
+package a3_array_queue_stack.stack;
 
 public class ArrayStack<E> implements Stack<E>{
 
