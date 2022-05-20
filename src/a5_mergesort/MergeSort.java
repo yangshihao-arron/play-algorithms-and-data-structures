@@ -15,10 +15,43 @@ public class MergeSort {
         if(l >= r) return;
 
         int mid = (r - l) / 2 + l;
-        System.out.println("call ");
         sort(arr, l, mid);
         sort(arr, mid + 1, r);
         merge(arr, l, mid, r);
+    }
+
+    private static <E extends Comparable<E>> void sort2(E[] arr, int l ,int r){
+
+        if(l >= r) return;
+
+        int mid = (r - l) / 2 + l;
+        sort2(arr, l, mid);
+        sort2(arr, mid + 1, r);
+        if(arr[mid].compareTo(arr[mid + 1]) > 0)//第一个优化
+            merge(arr, l, mid, r);
+    }
+
+    public static <E extends Comparable<E>> void sort2(E[] arr){
+        sort2(arr, 0, arr.length - 1);
+    }
+
+    public static <E extends Comparable<E>> void sort3(E[] arr){
+        sort3(arr, 0, arr.length - 1);
+    }
+
+    private static <E extends Comparable<E>> void sort3(E[] arr, int l ,int r){
+
+       // if(l >= r) return;
+        if(r - l <= 15){ //了解即可
+            InsertionSort.sort(arr, l, r); //小规模，插入排序比较好
+            return;
+        }
+
+        int mid = (r - l) / 2 + l;
+        sort3(arr, l, mid);
+        sort3(arr, mid + 1, r);
+        if(arr[mid].compareTo(arr[mid + 1]) > 0)
+            merge(arr, l, mid, r);
     }
 
 
@@ -50,10 +83,13 @@ public class MergeSort {
 
     public static void main(String[] args) {
 
-        int n = 1000000;
+        int n = 100000;
         Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
-        MergeSort.sort(arr);
-        SortingHelper.sortTest("MergeSort", arr);
+        Integer[] arr2 = Arrays.copyOf(arr,arr.length);
+        Integer[] arr3 = Arrays.copyOf(arr,arr.length);
+        SortingHelper.sortTest("MergeSort",arr);
+        SortingHelper.sortTest("MergeSort2",arr2);
+        SortingHelper.sortTest("MergeSort3",arr3);
 
     }
 

@@ -35,6 +35,12 @@ public class SortingHelper {
             AnotherInsertionSort.sort(arr);
         else if("MergeSort".equals(sortname))
             MergeSort.sort(arr);
+        else if("MergeSort2".equals(sortname))
+            MergeSort.sort2(arr);
+        else if("MergeSort3".equals(sortname))
+            MergeSort.sort3(arr);
+        else if("MergeSort20".equals(sortname))
+            MergeSort2.sort(arr);
 
         long endTime = System.nanoTime();
         if(!isSorted(arr))

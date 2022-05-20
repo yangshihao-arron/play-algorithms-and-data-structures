@@ -8,19 +8,27 @@ public class InsertionSort {
     private InsertionSort() {}
 
     //arr[0,i)已排序， arr[i, n) 未排序
-    public static <E extends Comparable<E>> void sort(E[] arr) {
-        for(int i = 1; i < arr.length; i++) {
-            for (int j = i; j > 0; j--) {
-                if (arr[j].compareTo(arr[j - 1]) < 0) {
-                    swap(arr, j, j - 1);
-                } else {
-                    break;
-                }
+    public static <E extends Comparable<E>> void sort(E[] arr){
+        for(int i = 0; i < arr.length; i ++){
+            E t = arr[i];
+            int j;
+            for(j = i; j > 0 && t.compareTo(arr[j - 1 ]) < 0; j--){
+                arr[j] = arr[j-1];
             }
-
+            arr[j] = t;
         }
     }
 
+    public static <E extends Comparable<E>> void sort(E[] arr, int l, int r){
+        for(int i = l; i <= r; i ++){
+            E t = arr[i];
+            int j;
+            for(j = i; j - 1 >= l && t.compareTo(arr[j - 1 ]) < 0; j--){
+                arr[j] = arr[j-1];
+            }
+            arr[j] = t;
+        }
+    }
     private static <E> void swap(E[] arr, int i, int j) {
         E temp = arr[i];
         arr[i] = arr[j];
