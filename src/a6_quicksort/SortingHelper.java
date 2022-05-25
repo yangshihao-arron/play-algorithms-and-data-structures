@@ -1,12 +1,13 @@
-package a5_mergesort;
+package a6_quicksort;
 
 import a2_basic_sorting_algorithm.insert.AnotherInsertionSort;
 import a2_basic_sorting_algorithm.insert.InsertionSort;
 import a2_basic_sorting_algorithm.insert.InsertionSort3;
 import a2_basic_sorting_algorithm.select.SelectionSort2;
 import a2_basic_sorting_algorithm.select.SelectionSort3;
-
-import java.lang.reflect.Method;
+import a5_mergesort.AnotherMergeSort;
+import a5_mergesort.MergeSort;
+import a5_mergesort.MergeSort2;
 
 public class SortingHelper {
 
@@ -43,7 +44,10 @@ public class SortingHelper {
             MergeSort2.sort(arr);
         else if("AnotherMergeSort".equals(sortname))
             AnotherMergeSort.sortBU(arr);
-
+        else if("QuickSort1".equals(sortname))
+            QuickSort1.sort(arr);
+        else if("QuickSort2".equals(sortname))
+            QuickSort2.sort(arr);
         long endTime = System.nanoTime();
         if(!isSorted(arr))
             throw new RuntimeException(sortname + " failed");

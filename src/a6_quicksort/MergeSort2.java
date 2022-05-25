@@ -1,27 +1,32 @@
-package a5_mergesort;
+package a6_quicksort;
+
+import a5_mergesort.ArrayGenerator;
+import a5_mergesort.SortingHelper;
 
 import java.util.Arrays;
 
-//自底向上的归并排序
-public class AnotherMergeSort {
+public class MergeSort2 {
 
-    public static <E extends Comparable<E>> void sortBU(E[] arr){
+    private MergeSort2(){}
+
+    public static <E extends Comparable<E>> void sort(E[] arr){
 
         E[] temp = Arrays.copyOf(arr, arr.length);
-
-        int n = arr.length;
-
-        //遍历合并区间的长度
-        for(int sz = 1; sz < n; sz += sz){
-            //遍历合并的两个区间的起始位置 i
-            //合并 [i, i + sz - 1] 和[ i + sz, Math.min(i + sz + sz - 1, n - 1)]
-            for(int i = 0; i + sz < n ; i += sz + sz){
-                if(arr[i + sz - 1].compareTo(arr[i + sz]) > 0)
-                    //防止下标越界
-                    merge(arr, i, i + sz - 1,Math.min(i + sz + sz - 1, n - 1), temp);
-            }
-        }
+        sort(arr, 0, arr.length - 1, temp);
     }
+
+    private static <E extends Comparable<E>> void sort(E[] arr, int l ,int r, E[] temp){
+
+        if(l >= r) return;
+
+        int mid = (r - l) / 2 + l;
+        sort(arr, l, mid,temp);
+        sort(arr, mid + 1, r, temp);
+        if(arr[mid].compareTo(arr[mid + 1]) > 0)
+            merge(arr, l, mid, r, temp);
+    }
+
+
 
     //合并两个有序的区间arr[l,mind] 和arr[mid + 1, r]
     private static <E extends Comparable<E>> void merge(E[] arr, int l, int mid, int r, E[] temp){
@@ -51,13 +56,15 @@ public class AnotherMergeSort {
     }
 
     public static void main(String[] args) {
-        int n = 100000;
 
+        int n = 100000;
         Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
         Integer[] arr2 = Arrays.copyOf(arr, arr.length);
 
-        SortingHelper.sortTest("AnotherMergeSort",arr);
-        SortingHelper.sortTest("MergeSort",arr2);
+        a5_mergesort.SortingHelper.sortTest("MergeSort2",arr);
+        SortingHelper.sortTest("MergeSort20",arr2);
+
+
     }
 
 }
