@@ -3,9 +3,9 @@ package a6_quicksort;
 import java.util.Arrays;
 import java.util.Random;
 
-//为快速排序添加随机化
-public class QuickSort2 {
-    private QuickSort2(){}
+//双路快速排序
+public class QuickSort3 {
+    private QuickSort3(){}
 
     public static  <E extends Comparable<E>> void sort(E[] arr){
         Random random = new Random();
@@ -24,14 +24,22 @@ public class QuickSort2 {
         //生成[l, r]之间的随机索引
         int p = new Random().nextInt(r - l + 1) + l;
         swap(arr, l, p);
-        //arr[l+1, j]中的元素 < arr[l]
-        //arr[j + 1, i - 1]中的元素 >= arr[l]
-        int j = l;
-        for(int i = l + 1; i <= r; i++){
-            if(arr[l].compareTo(arr[i]) >= 0){
-                j++;
-               swap(arr, i, j);
+        //arr[l+1, i - 1] <= v
+        //arr[j + 1, r]  >= v
+        int i = l + 1, j = r;
+        while(true){
+            while(i <= j && arr[i].compareTo(arr[l]) < 0){
+                i++;
             }
+            while(j >= i && arr[j].compareTo(arr[l]) > 0)
+                j--;
+
+            if(i >= j)  //i == j ,指向等于标定点的元素
+                break;
+
+            swap(arr, i, j);
+            i++;
+            j--;
         }
         swap(arr, l, j);
         return j;
@@ -53,7 +61,9 @@ public class QuickSort2 {
         SortingHelper.sortTest("QuickSort2", arr3);
 
         Integer[] arr4 = ArrayGenerator.generateRandomArray(n, 1);
+        Integer[] arr5 = Arrays.copyOf(arr4, arr4.length);
         SortingHelper.sortTest("QuickSort2", arr4);
+        SortingHelper.sortTest("QuickSort3", arr5);
     }
 
 }

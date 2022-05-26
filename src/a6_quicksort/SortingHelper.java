@@ -48,6 +48,10 @@ public class SortingHelper {
             QuickSort1.sort(arr);
         else if("QuickSort2".equals(sortname))
             QuickSort2.sort(arr);
+        else if("QuickSort3".equals(sortname)){
+            QuickSort3.sort(arr);
+        }
+
         long endTime = System.nanoTime();
         if(!isSorted(arr))
             throw new RuntimeException(sortname + " failed");
