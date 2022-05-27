@@ -50,6 +50,8 @@ public class SortingHelper {
             QuickSort2.sort(arr);
         else if("QuickSort3".equals(sortname)){
             QuickSort3.sort(arr);
+        }else if("QuickSort4".equals(sortname)){
+            QuickSort4.sort(arr);
         }
 
         long endTime = System.nanoTime();
